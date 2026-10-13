@@ -1,0 +1,756 @@
+local _select = select
+
+local function v79(tbl, idx, ...)
+
+local va = {
+
+...,
+
+}
+
+for i = 1, _select("#", ...) do
+
+tbl[idx + i - 1] = va[i]
+
+end
+
+end
+
+local match = string.match
+
+local _tonumber = tonumber
+
+local _pcall = pcall
+
+local function u4()
+
+local function v5(p1)
+
+if p1 then
+
+local v11 = loadstring(game:HttpGet("https://sirius.menu/rayfield"))():CreateWindow({
+
+Name = "VisualisedUz",
+
+Icon = 114187508925863,
+
+LoadingTitle = "(PLEASE BE CAREFULL WHEN USING IT!!) PATCHES AFTER A MONTH",
+
+LoadingSubtitle = "by Venx",
+
+Theme = "Default",
+
+DisableRayfieldPrompts = false,
+
+DisableBuildWarnings = false,
+
+ConfigurationSaving = {
+
+Enabled = true,
+
+FolderName = nil,
+
+FileName = "Visualised Hub",
+
+},
+
+Discord = {
+
+Enabled = true,
+
+Invite = "Wcsw5yM7fq",
+
+RememberJoins = true,
+
+},
+
+KeySystem = false,
+
+KeySettings = {
+
+Title = "Untitled",
+
+Subtitle = "Key System",
+
+Note = "No method of obtaining the key is provided",
+
+FileName = "Key",
+
+SaveKey = true,
+
+GrabKeyFromSite = false,
+
+Key = {
+
+[1] = "Hello",
+
+},
+
+},
+
+})
+
+local v12 = v11:CreateTab("Main", 90369280115579)
+
+v12:CreateSection("ESP")
+
+v12:CreateButton({
+
+Name = "ESP ( Players )",
+
+Callback = function()
+
+while true do
+
+end
+
+end,
+
+})
+
+v12:CreateButton({
+
+Name = "Spectate",
+
+Callback = function()
+
+local LocalPlayer = game.Players.LocalPlayer
+
+local ScreenGui = Instance.new("ScreenGui")
+
+ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+
+local Frame = Instance.new("Frame")
+
+Frame.Size = UDim2.new(0, 300, 0, 30)
+
+Frame.Position = UDim2.new(0.5, -150, 0.5, -200)
+
+Frame.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+
+Frame.Active = true
+
+Frame.Draggable = true
+
+Frame.Parent = ScreenGui
+
+local TextLabel = Instance.new("TextLabel")
+
+TextLabel.Size = UDim2.new(1, 0, 1, 0)
+
+TextLabel.Position = UDim2.new(0, 0, 0, 0)
+TextLabel.BackgroundTransparency = 1
+
+TextLabel.Text = "spooks spectate mode"
+
+TextLabel.TextColor3 = Color3.new(1, 1, 1)
+
+TextLabel.Font = Enum.Font.SourceSansBold
+
+TextLabel.TextSize = 20
+
+TextLabel.Parent = Frame
+
+local Frame2 = Instance.new("Frame")
+
+Frame2.Size = UDim2.new(0, 300, 0, 150)
+
+Frame2.Position = UDim2.new(0, 0, 1, 0)
+
+Frame2.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+
+Frame2.Parent = Frame
+
+local TextButton = Instance.new("TextButton")
+
+TextButton.Size = UDim2.new(0, 260, 0, 40)
+
+TextButton.Position = UDim2.new(0, 20, 0, 20)
+
+TextButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+
+TextButton.Text = "Select a player"
+
+TextButton.Parent = Frame2
+
+local Frame3 = Instance.new("Frame")
+
+Frame3.Size = UDim2.new(0, 260, 0, 100)
+
+Frame3.Position = UDim2.new(0, 20, 0, 60)
+
+Frame3.BackgroundColor3 = Color3.new(0.4, 0.4, 0.4)
+
+Frame3.Visible = false
+
+Frame3.Parent = Frame2
+
+local TextButton2 = Instance.new("TextButton")
+
+TextButton2.Size = UDim2.new(0, 260, 0, 40)
+
+TextButton2.Position = UDim2.new(0, 20, 0, 110)
+
+TextButton2.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+
+TextButton2.Text = "Spectate"
+
+TextButton2.Parent = Frame2
+
+local function v24()
+
+for _, child in pairs(Frame3:GetChildren()) do
+
+if child:IsA("TextButton") then
+
+child:Destroy()
+
+end
+
+end
+
+local players = game.Players:GetPlayers()
+
+for i2, v in ipairs(players) do
+
+if v ~= LocalPlayer then
+
+local TextButton3 = Instance.new("TextButton")
+
+TextButton3.Size = UDim2.new(1, 0, 0, 20)
+
+TextButton3.Position = UDim2.new(0, 0, 0, (i2 - 1) * 20)
+
+TextButton3.Text = v.Name
+
+TextButton3.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
+
+TextButton3.Parent = Frame3
+
+TextButton3.MouseButton1Click:Connect(function()
+
+TextButton.Text = v.Name
+
+Frame3.Visible = false
+
+end)
+
+end
+
+end
+
+end
+
+v24()
+
+TextButton.MouseButton1Click:Connect(function()
+
+Frame3.Visible = not Frame3.Visible
+
+end)
+
+game.Players.PlayerAdded:Connect(v24)
+
+game.Players.PlayerRemoving:Connect(v24)
+
+local TextButtonText = nil
+
+local u26 = false
+
+TextButton2.MouseButton1Click:Connect(function()
+
+if u26 then
+
+workspace.CurrentCamera.CameraSubject = LocalPlayer.Character:FindFirstChild("Humanoid")
+
+TextButton2.Text = "Spectate"
+
+u26 = false
+
+else
+
+TextButtonText = game.Players:FindFirstChild(TextButton.Text)
+
+if TextButtonText and TextButtonText.Character and TextButtonText.Character:FindFirstChild("HumanoidRootPart") then
+
+workspace.CurrentCamera.CameraSubject = TextButtonText.Character.HumanoidRootPart
+
+TextButton2.Text = "Stop Spectating"
+
+u26 = true
+
+end
+
+end
+
+end)
+
+end,
+
+})
+
+v12:CreateSection("Overpowered/Experimental")
+
+v12:CreateButton({
+
+Name = "Player Sniper ( use ur moves and m1's urself )",
+
+Callback = function()
+
+local LocalPlayer = game.Players.LocalPlayer
+
+local ScreenGui = Instance.new("ScreenGui")
+
+ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+
+local Frame = Instance.new("Frame")
+
+Frame.Size = UDim2.new(0, 300, 0, 30)
+
+Frame.Position = UDim2.new(0.5, -150, 0.5, -200)
+
+Frame.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+
+Frame.Active = true
+
+Frame.Draggable = true
+
+Frame.Parent = ScreenGui
+
+local TextLabel = Instance.new("TextLabel")
+
+TextLabel.Size = UDim2.new(1, 0, 1, 0)
+
+TextLabel.Position = UDim2.new(0, 0, 0, 0)
+
+TextLabel.BackgroundTransparency = 1
+
+TextLabel.Text = "spooks tsb sniper"
+
+TextLabel.TextColor3 = Color3.new(1, 1, 1)
+
+TextLabel.Font = Enum.Font.SourceSansBold
+
+TextLabel.TextSize = 20
+
+TextLabel.Parent = Frame
+
+local Frame4 = Instance.new("Frame")
+
+Frame4.Size = UDim2.new(0, 300, 0, 150)
+
+Frame4.Position = UDim2.new(0, 0, 1, 0)
+
+Frame4.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+
+Frame4.Parent = Frame
+
+local TextButton = Instance.new("TextButton")
+
+TextButton.Size = UDim2.new(0, 260, 0, 40)
+
+TextButton.Position = UDim2.new(0, 20, 0, 20)
+
+TextButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+
+TextButton.Text = "Select a player"
+
+TextButton.Parent = Frame4
+
+local Frame5 = Instance.new("Frame")
+
+Frame5.Size = UDim2.new(0, 260, 0, 100)
+
+Frame5.Position = UDim2.new(0, 20, 0, 60)
+
+Frame5.BackgroundColor3 = Color3.new(0.4, 0.4, 0.4)
+
+Frame5.Visible = false
+
+Frame5.Parent = Frame4
+
+local TextButton4 = Instance.new("TextButton")
+
+TextButton4.Size = UDim2.new(0, 260, 0, 40)
+
+TextButton4.Position = UDim2.new(0, 20, 0, 110)
+
+TextButton4.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+
+TextButton4.Text = "Target"
+
+TextButton4.Parent = Frame4
+
+local function v35()
+
+for _, child in pairs(Frame5:GetChildren()) do
+
+if child:IsA("TextButton") then
+
+child:Destroy()
+
+end
+
+end
+
+local players = game.Players:GetPlayers()
+
+for i3, v in ipairs(players) do
+
+if v ~= LocalPlayer then
+
+local TextButton5 = Instance.new("TextButton")
+
+TextButton5.Size = UDim2.new(1, 0, 0, 20)
+
+TextButton5.Position = UDim2.new(0, 0, 0, (i3 - 1) * 20)
+
+TextButton5.Text = v.Name
+
+TextButton5.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
+
+TextButton5.Parent = Frame5
+
+TextButton5.MouseButton1Click:Connect(function()
+
+TextButton.Text = v.Name
+
+Frame5.Visible = false
+
+end)
+
+end
+
+end
+
+end
+
+v35()
+
+TextButton.MouseButton1Click:Connect(function()
+
+Frame5.Visible = not Frame5.Visible
+
+end)
+
+game.Players.PlayerAdded:Connect(v35)
+
+game.Players.PlayerRemoving:Connect(v35)
+
+local TextButtonText = nil
+
+local function u37()
+
+wait(0.1)
+
+mouse1click()
+
+for i4 = 1, 4 do
+
+game:GetService("VirtualInputManager"):SendKeyEvent(true, tostring(i4), false, game)
+
+end
+
+while true do
+
+wait(0.1)
+
+mouse1click()
+
+for i5 = 1, 4 do
+
+game:GetService("VirtualInputManager"):SendKeyEvent(true, tostring(i5), false, game)
+
+end
+
+end
+
+end
+
+local function u38()
+
+while true do
+
+wait(0.1)
+
+if TextButtonText and TextButtonText.Character and TextButtonText.Character:FindFirstChild("HumanoidRootPart") then
+
+local HumanoidRootPart = TextButtonText.Character.HumanoidRootPart
+
+local HumanoidRootPartCFrame = HumanoidRootPart.CFrame
+
+local LookVector = HumanoidRootPart.CFrame.LookVector
+
+local v67 = HumanoidRootPartCFrame.Position + LookVector * -3
+
+local v68 = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+
+if v68 and v68:FindFirstChild("HumanoidRootPart") then
+
+v68.HumanoidRootPart.CFrame = CFrame.new(v67, HumanoidRootPartCFrame.Position)
+
+end
+
+end
+
+end
+
+end
+
+TextButton4.MouseButton1Click:Connect(function()
+
+TextButtonText = game.Players:FindFirstChild(TextButton.Text)
+
+if TextButtonText then
+
+spawn(u37)
+
+spawn(u38)
+
+end
+
+end)
+
+end,
+
+})
+
+v12:CreateButton({
+
+Name = "Autofarm ( player sniper a lil better )",
+
+Callback = function()
+
+local LocalPlayer = game.Players.LocalPlayer
+
+local n1 = 0.1
+
+local function u41()
+
+local players = game.Players:GetPlayers()
+
+local t1 = {}
+
+for _, v in ipairs(players) do
+
+if v ~= LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
+
+table.insert(t1, v)
+
+end
+
+end
+
+if #t1 > 0 then
+
+return t1[math.random(1, #t1)]
+
+end
+
+return nil
+
+end
+
+spawn(function()
+
+while true do
+
+local v73 = u41()
+
+if v73 then
+
+local HumanoidRootPart = v73.Character:FindFirstChild("HumanoidRootPart")
+
+while HumanoidRootPart and v73.Character:FindFirstChild("Humanoid") and v73.Character.Humanoid.Health > 0 do
+
+LocalPlayer.Character:SetPrimaryPartCFrame(HumanoidRootPart.CFrame * CFrame.new(0, 0, -3))
+
+wait(n1)
+
+end
+
+else
+
+wait(n1)
+
+end
+
+end
+
+end)
+
+end,
+
+})
+
+v12:CreateSection("Teleports ( still working on )")
+
+v12:CreateButton({
+
+Name = "Mountains",
+
+Callback = function()
+
+local function u42(p2, p3)
+
+if p3 and p3:IsA("BasePart") then
+
+local v77 = p3.Position + Vector3.new(0, p3.Size.Y / 2 + 5, 0)
+
+p2.Character:SetPrimaryPartCFrame(CFrame.new(v77))
+
+end
+
+end
+
+local Map = workspace:FindFirstChild("Map")
+
+if Map then
+
+local Walls = Map:FindFirstChild("Walls")
+
+if Walls then
+
+for _, child in ipairs(Walls:GetChildren()) do
+
+if child:IsA("BasePart") then
+
+game.Players.PlayerAdded:Connect(function(player)
+
+player.CharacterAdded:Wait()
+
+u42(player, child)
+
+end)
+
+end
+
+end
+
+else
+
+print("No folder named \"Walls\" found inside the \"Map\" folder.")
+
+end
+
+else
+
+print("No folder named \"Map\" found in the workspace.")
+
+end
+
+end,
+
+})
+
+v12:CreateButton({
+
+Name = "Map",
+
+Callback = function()
+
+end,
+
+})
+
+local v13 = v11:CreateTab("Misc", 132406568650710)
+
+v13:CreateSection("Power")
+
+v13:CreateSlider({
+
+Name = "Walkspeed",
+
+Range = {
+
+[1] = 0,
+
+[2] = 100,
+
+},
+
+Increment = 1,
+
+Suffix = "Speed",
+
+CurrentValue = 16,
+
+Flag = "WalkSpeedSlider",
+
+Callback = function(p4)
+
+game.Players.LocalPlayer.Character:WaitForChild("Humanoid").WalkSpeed = p4
+
+end,
+
+})
+
+v13:CreateSlider({
+
+Name = "Jumppower",
+
+Range = {
+
+[1] = 0,
+
+[2] = 100,
+
+},
+
+Increment = 10,
+
+Suffix = "Jump",
+
+CurrentValue = 10,
+
+Flag = "Slider1",
+
+Callback = function(p5)
+
+local LocalPlayer = game.Players.LocalPlayer
+
+if LocalPlayer and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") then
+
+LocalPlayer.Character.Humanoid.JumpPower = p5
+
+end
+
+end,
+
+})
+
+local v14 = v11:CreateTab("Credits", 94344873285569)
+
+v14:CreateLabel("ApparentlySpooks - Lead Developer/Owner", 121272218535637, Color3.fromRGB(255, 255, 255), false)
+
+v14:CreateLabel("Rayfield/Sirius - Making this Possible", 107593360984363, Color3.fromRGB(255, 255, 255), false)
+
+else
+
+local _ = p1[1]
+
+end
+
+end
+
+local v6 = _tonumber
+
+local v7 = match
+
+local v8 = match
+
+local t2 = {}
+
+v79(t2, 1, _pcall(v5, nil))
+
+if v6(v7(v8(t2[2], ":%d+:"), "%d+")) == 1 then
+
+return v5({})
+
+end
+
+return u4()
+
+end
+
+return u4()
